@@ -62,13 +62,13 @@ export default {
       process.env.NODE_ENV === "production"
         ? false
         : process.env.NODE_ENV !== "staging",
-    baseURL: process.env.BASE_URL || "http://84.247.147.88:8080",
+    baseURL: process.env.BASE_URL || process.env.HOST_URL,
     // proxyHeaders: false,
     // credentials: false
   },
   proxy: {
     "/api/v1/": {
-      target: "http://84.247.147.88:8080/api/v1",
+      target: process.env.HOST_URL + "/api/v1",
       pathRewrite: { "^/api/v1/": "" },
     },
   },
@@ -154,7 +154,7 @@ export default {
   },
   loading: false,
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || "http://84.247.147.88:8080",
+    baseURL: process.env.BASE_URL || process.env.HOST_URL,
     nodeEnv: process.env.NODE_ENV || "development",
   },
 };
