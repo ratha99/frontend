@@ -1,6 +1,10 @@
 import createSitemapRoutes from "./utils/createSitemap";
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  server: {
+    host: '0.0.0.0', // Default: localhost
+    port: 3000,      // Default port
+  },
   head: {
     title: "TFD Nuxt Tailwind Boilerplate",
     htmlAttrs: {
@@ -58,13 +62,13 @@ export default {
       process.env.NODE_ENV === "production"
         ? false
         : process.env.NODE_ENV !== "staging",
-    baseURL: process.env.BASE_URL || "http://localhost:80",
+    baseURL: process.env.BASE_URL || "http://localhost:8080",
     // proxyHeaders: false,
     // credentials: false
   },
   proxy: {
     "/api/v1/": {
-      target: "http://localhost:80/api/v1",
+      target: "http://localhost:8080/api/v1",
       pathRewrite: { "^/api/v1/": "" },
     },
   },
@@ -150,7 +154,7 @@ export default {
   },
   loading: false,
   publicRuntimeConfig: {
-    baseURL: process.env.BASE_URL || "http://localhost:80",
+    baseURL: process.env.BASE_URL || "http://localhost:8080",
     nodeEnv: process.env.NODE_ENV || "development",
   },
 };
